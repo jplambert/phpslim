@@ -9,7 +9,7 @@ abstract class PhpSlim_Socket
     protected $_socketResource;
     protected $_communicationSocket;
 
-    const CHUNK_SIZE = 50;
+    const CHUNK_SIZE = 50000;
 
     public function __construct($host, $port)
     {
