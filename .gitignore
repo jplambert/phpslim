@@ -2,6 +2,7 @@
 .svn
 VMBridge.log
 bin
+!PhpSlim/bin/remote.sh
 PhpSlim/build/PEAR
 PhpSlim/build/log
 classes
