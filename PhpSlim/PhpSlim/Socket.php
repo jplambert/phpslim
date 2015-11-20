@@ -4,7 +4,7 @@ abstract class PhpSlim_Socket
     protected $_host;
     protected $_port;
     private $_logger;
-    private $_numberOfRetries = 20;
+    private $_numberOfRetries = 1500;
 
     protected $_socketResource;
     protected $_communicationSocket;
@@ -67,7 +67,6 @@ abstract class PhpSlim_Socket
                     "but no readable data was available."
                 );
             }
-            usleep(10000);
             $i++;
         }
     }
@@ -77,7 +76,7 @@ abstract class PhpSlim_Socket
         $read = array($this->_communicationSocket);
         $write = null;
         $except = null;
-        $result = socket_select($read, $write, $except, 1);
+        $result = socket_select($read, $write, $except, 0, 100000);
         if (false === $result) {
             $this->raiseError("socket_select() failed");
         }
